@@ -1,89 +1,231 @@
+/* Box sizing rules */
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap");
+
 *,
-*::after,
-*::before {
-  margin: 0;
-  padding: 0;
-  border: 0;
+*::before,
+*::after {
+  box-sizing: border-box;
 }
 
+/* Remove default padding */
+ul[class],
+ol[class] {
+  padding: 0;
+}
+
+/* Remove default margin */
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+ul[class],
+ol[class],
+li,
+figure,
+figcaption,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+/* Set core body defaults */
 body {
-  box-sizing: border-box;
-  font-family: "Poppins", sans-serif;
+  min-height: 100vh;
+  scroll-behavior: smooth;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
 }
+
+/* Remove list styles on ul, ol elements with a class attribute */
+ul[class],
+ol[class] {
+  list-style: none;
+}
+
+/* A elements that don't have a class get default styles */
+a:not([class]) {
+  text-decoration-skip-ink: auto;
+}
+
+/* Make images easier to work with */
 img {
-  display: block;
   max-width: 100%;
-  height: 60vh;
+  display: block;
 }
+
+/* Natural flow and rhythm in articles by default */
+article > * + * {
+  margin-top: 1em;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+/* Remove all animations and transitions for people that prefer not to see them */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+:root {
+  /*colors */
+  --clr-primary-headings: rgb(255, 255, 255);
+  --clr-secondary-headings: red;
+  --clr-paragraphs: rgb(255, 255, 255);
+  --bg-clr-main-bg: rgb(14, 15, 14);
+
+  /* font size */
+  --fs-800: 4.85rem;
+  --fs-600: 1.65rem;
+  --fs-400: 1.4rem;
+  --fs-100: 1rem;
+  --fw-bold: bold;
+  --fw-600: 600;
+  --fw-400: 400;
+  /*paddings*/
+  --container-pad: 2rem;
+}
+body {
+  background-color: var(--bg-clr-main-bg);
+  font-family: "Poppins", sans-serif;
+  color: var(--clr-primary-headings);
+  background-image: url(/assets/home/background-home-desktop.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+@media (max-width: 1100px) {
+  body {
+    background-image: url("/assets/home/background-home-tablet.jpg");
+  }
+}
+@media (max-width: 45em) {
+  body {
+    background-image: url("/assets/home/background-home-mobile.jpg");
+    background-size: cover;
+  }
+}
+
+h1,
+p {
+  line-height: 1.5rem;
+}
+/* Utility classes */
+p {
+  color: var(--clr-paragraphs);
+  font-size: var(--fs-400);
+  font-weight: var(--fw-400);
+}
+
+h3 {
+  font-size: var(--fs-800);
+  color: var(--clr-paragraphs);
+  font-family: "Poppins", sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 1.3rem;
+}
+h1 {
+  color: var(--clr-primary-headings);
+  font-size: var(--fs-600);
+  text-transform: uppercase;
+}
+/*header*/
 .header {
   display: flex;
-  background-color: #bd1e51;
   justify-content: space-between;
+  margin-left: 2rem;
   align-items: center;
-  padding: 2rem;
+  padding: 2rem 0;
 }
-@media (max-width: 1022px) {
+.logo {
+  flex: 1;
+}
+.nav-links {
+  display: flex;
+  gap: 3.5rem;
+
+  background: rgb(14, 15, 14, 6%);
+  backdrop-filter: blur(7px);
+
+  flex: 1;
+}
+
+.nav-links a {
+  word-spacing: 0.3rem;
+  color: var(--clr-primary-headings);
+  text-decoration: none;
+  display: block;
+  padding: 23px 20px;
+  position: relative;
+  border-bottom: 2px solid rgba(255, 99, 71, 0);
+}
+
+a:hover {
+  border-bottom: 2px solid rgb(255, 255, 255);
+
+  transition: 0.4s;
+  transition-timing-function: ease-in;
+}
+.menu {
+  display: none;
+}
+@media (max-width: 950px) {
   .header {
     flex-direction: column;
+
     gap: 2rem;
   }
   .nav-links {
     flex-direction: column;
-    align-items: center;
+    width: 80%;
+    gap: 1.3rem;
+    text-align: center;
   }
 }
-
-.main-logo h1 span {
-  color: #f1b814;
+.container {
+  max-width: 90%;
+  width: 930px;
+  margin-inline: auto;
 }
-.nav-links {
+section {
   display: flex;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  gap: 2rem;
-  margin-left: 20%;
+  align-items: center;
+  margin: 0 auto;
+  margin-top: 8rem;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
-.nav-links a {
-  display: block;
-  text-decoration: none;
-  padding: 10px 20px;
-  font-size: 1.1rem;
-  font-weight: bold;
-  color: #490b3d;
-  text-transform: uppercase;
-}
-.nav-links a:hover {
-  background-color: #f1b814;
-  border-radius: 100vh;
-  transition-timing-function: linear;
-  transition: 0.4s;
-  color: aliceblue;
-}
-.main-signup {
-  font-size: 1.4rem;
-  font-weight: bold;
-  text-transform: lowercase;
-  padding: 10px 20px;
-  color: #490b3d;
-  cursor: pointer;
-  background-color: #f1b814;
-}
-.main-signup:hover {
-  background-color: #f0c440;
-}
-.main-info {
-  background: #f1b814;
-  background-image: url("/images/main.jpg");
+.content {
+  width: 400px;
+  max-width: 95%;
 
-  padding: 12rem;
-  background-origin: border-box;
-  text-align: center;
+  line-height: 10rem;
 }
-.main-text {
+.ball {
+  background-color: rgb(255, 255, 255);
+  height: 200px;
+  width: 200px;
+  position: relative;
+  margin-top: 10rem;
+  border-radius: 50%;
+}
+h2 {
+  color: rgb(89, 86, 86);
+  position: absolute;
+  letter-spacing: 0.7rem;
   font-size: 1.8rem;
-  padding: 3rem;
-}
-.main-text p {
+  text-align: center;
+  inset: 40% 8%;
 }
